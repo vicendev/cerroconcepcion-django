@@ -1,0 +1,59 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-4 mb-2">
+            <h1>{{estate.title}}</h1><br>
+            <div class="row">
+                <div class="col-6">
+                    <img class="img-thumbnail imgs-cover" src="{{estate.image_cover.url}}" alt="">
+                </div>
+                <div class="col-6">
+                    <div id="imgsCarouselDetail" class="carousel slide" data-ride="carousel">
+                        <ul class="carousel-indicators">
+                        {% for imgs in images %}
+                            <li data-target="#imgsCarouselDetail" data-slide-to="{{ forloop.counter0 }}" class="item {% if forloop.counter0 == 0 %}active{% endif %}"></li>
+                        {% endfor %}
+                        </ul>
+                        <div class="carousel-inner">
+                        {% for imgs in images %}
+                            <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                                <a href="{{imgs.file.url}}" data-lightbox="images">
+                                    <img class="imgs-estate" src="{% if imgs.file %}{{imgs.file.url}}{% else %}{% static 'core/img/no-image.png'%} {% endif%}">
+                                </a>
+                            </div>            
+                        {% endfor %} 
+                        </div>  
+                        <a class="carousel-control-prev" href="#imgsCarouselDetail" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+                        <a class="carousel-control-next" href="#imgsCarouselDetail" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mt-3">
+                    <div>
+                        <h3>Detalles:</h3>
+                        <ul>
+                            <li>Precio: $ {{ estate.price }}</li>
+                            <li>Habitaciones: {{ estate.room }}</li>
+                            <li>Baños: {{estate.bathroom}}</li>
+                            <li>Area: {{estate.area}}m&sup2;</li>
+                            <li>Telefono: {{estate.phone_number}}</li>
+                        </ul>
+                    </div>
+                    <p class="text-justify">{{estate.content}}</p>
+                </div>
+                <div class="col-6 mt-3">
+                    <h3>Ubicación:</h3>
+                    <img class="img-fluid" src="https://www.maptiler.com/img/map-home.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content%}
+<div class="container">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="{% static 'core/img/slider/home/01.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/02.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/03.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/04.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/05.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/06.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/07.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/08.jpg' %}" width="1100" height="500">
+        </div>
+        <div class="carousel-item">
+        <img src="{% static 'core/img/slider/home/09.jpg' %}" width="1100" height="500">
+        </div>
+    </div>
+    
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    </div>
+ </div>
+
+<!-- Botones y publicidad -->
+ <div class="container">
+     <div class="row">
+         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-2">
+             <a href="{% url 'estates' %}"><img class="buttons-img img-fluid" src="{% static 'core/img/buttons/pics_01_propiedades.png' %}"></a>
+         </div>
+         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-2">
+             <img class="buttons-img img-fluid" src="{% static 'core/img/buttons/pics_02_gastronomia.png' %}">
+         </div>
+         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-2">
+             <img class="buttons-img img-fluid" src="{% static 'core/img/buttons/pics_03_hoteleria.png' %}">
+         </div>
+         <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 mt-2">
+             <img class="buttons-img img-fluid" src="{% static 'core/img/buttons/pics_04_compras.png' %}">
+         </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 mt-2">
+            <div id="publicity" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#publicity" data-slide-to="0" class="active"></li>
+                    <li data-target="#publicity" data-slide-to="1"></li>
+                    <li data-target="#publicity" data-slide-to="2"></li>
+                </ul>
+                
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="{% static 'core/img/publicity/00.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="{% static 'core/img/publicity/01.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="{% static 'core/img/publicity/02.jpg' %}">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="{% static 'core/img/publicity/03.jpg' %}">
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+ </div>
+
+      <!-- Extracto Valparaíso -->
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-12 text-left">
+            <p class="text-justify pl-5 pr-5">Valparaíso en el año 2017 dió la bienvenida a más de 1 millón de turistas de distintas latitudes. 
+            Con sus inigualables recovecos y altos cerros llenos de color, arte popular y la conducta de su gente, 
+            llena de sueños, bohemia y de mente tan abierta donde nadie es discriminado. Esta estructura topográfica y 
+            social es lo que ha convertido a Valparaíso en un destino turístico y en la cuna universitaria de Chile. Y 
+            la capital de todo este encanto se centra en los cerros patrimonio de la humanidad Concepción y Alegre, ambos 
+            un lugar ideal para hacer negocios inmobiliarios, gastronómicos y hoteleros o de otra índole.</p>
+            <p  class="text-justify pl-5 pr-5">Actualmente en Cerro Concepción hay más de US$ 115 millones invertidos en proyectos de turismo e inmobiliarios. 
+            Con esto en mente, Valparaíso es una tierra fértil para las inversiones de corto, mediano y largo plazo.</p>
+            <a href="http://es.calameo.com/read/0000742319830a9fd936e" target="_blank"><img class="pl-5" src="{% static 'core/img/info.png' %}"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

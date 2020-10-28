@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% block title %}Nueva Propiedad{% endblock %}
+
+{% block content%}
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3">
+                <form action="" enctype='multipart/form-data' method="POST">
+                    {% csrf_token %}
+
+                    {% for field in estateForm %}
+                        {{ field|bootstrap }} </br>
+                    {% endfor %}
+                    
+                    {% for image in imageForm %}
+                    {{ image|bootstrap }}
+                    {% endfor %}
+                    
+                    <div class="col-6 mb-4">
+                        <div id="imgsCarouselDetail" class="carousel slide" data-ride="carousel">
+                            <ul class="carousel-indicators">
+                            {% for imgs in images %}
+                                <li data-target="#imgsCarouselDetail" data-slide-to="{{ forloop.counter0 }}" class="item {% if forloop.counter0 == 0 %}active{% endif %}"></li>
+                            {% endfor %}
+                            </ul>
+                            <div class="carousel-inner">
+                            {% for imgs in images %}
+                                <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                                    <a href="{{imgs.file.url}}" data-lightbox="images">
+                                        <img class="imgs-estate" src="{% if imgs.file %}{{imgs.file.url}}{% else %}{% static 'core/img/no-image.png'%} {% endif%}">
+                                    </a>
+                                    <div class="carousel-caption">
+                                        <a id="{{imgs.id}}" class="btn btn-danger">Eliminar</a>
+                                    </div>
+                                </div>            
+                            {% endfor %} 
+                            </div>  
+                            <a class="carousel-control-prev" href="#imgsCarouselDetail" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+                            <a class="carousel-control-next" href="#imgsCarouselDetail" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <input id="btn-submit" type="submit" class="btn btn-primary btn-block" value="Publicar"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".btn-danger").click(function() {
+            var pk = $(this).attr('id');
+            $.ajax({
+                url: "{% url 'images-delete' %}",
+                data: { 'pk' : pk },
+                beforeSend: function(xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}" );
+                },
+                success: function(response){
+                    el = document.getElementById(pk)
+                    el.parentNode.removeChild(el)
+                }
+            });
+        });
+    });
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load bootstrap %}
+{% load pagination_tags %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <input id="estate-hideshow" type="button" class="btn btn-info" value="Ocultar Filtros">
+</div>
+<div id="div-estate-filter" class="container mt-3">
+    
+    <form method="GET">
+    {{ filter.form |bootstrap}}
+    <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+</div>
+ 
+ <ul>
+ </ul>
+
+
+ <div class="container">
+    <div class="row">
+    {% autopaginate filter.qs 5 as filter_list %}
+
+    {% for estate in filter_list %}
+
+        <div class="col-4 mt-2">
+            <img class="img-thumbnail img-cover-list" src="{{estate.image_cover.url}}" alt="">
+        </div>
+        <div class="col-4 mt-2">
+            <a href="{% url 'estate-detail' estate.id %}"><h5>{{estate.title}}</h5></a>
+            <p>{{estate.content|truncatewords:50}}</p>
+        </div>
+        <div class="col-4 mt-2">
+        <p><b>Precio:</b> $ {{estate.price}}</p>
+        <p><b>Habitaciones:</b> {{estate.room}}</p>
+        <p><b>Baños:</b> {{estate.bathroom}}</p>
+        <p><b>Área:</b> {{estate.area}}m&sup2;</p>
+        </div>
+
+    {% endfor %}
+
+    </div>
+      <!-- navigation -->
+  {% paginate %}  
+ </div>
+
+{% endblock %}

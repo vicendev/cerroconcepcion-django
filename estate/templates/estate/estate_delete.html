@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+{% block title %}Eliminar Publicación{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="" method="post">
+        {% csrf_token %}
+        <h2 class="pl-5 pr-5 pt-5">{{estate.title}}</h2>
+        <p class="pl-5">¿Esta seguro de eliminar esta publicación?</p>
+        <input class="ml-5 mb-3 btn btn-danger btn-lg" type="submit" name="" value="Eliminar">
+    </form>
+</div>
+{% endblock %}
